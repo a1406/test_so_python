@@ -158,10 +158,10 @@ objs : $(OBJS)
 #----------------------------------------------
 
 main: main.o
-	$(CXX) -o $(@) $^   $(LDFLAGS) -ldl
+	$(CXX) -o $(@) $^   $(LDFLAGS) -ldl  -lpython2.7
 
 liblogic.so: logic.o
-	$(CXX) -o $(@) $^   $(LDFLAGS) -ldl -shared
+	$(CXX) -o $(@) $^   $(LDFLAGS) -ldl -lpython2.7 -shared
 
 libtest.so: test.o
 	$(CXX) -o $(@) $^   $(LDFLAGS) -ldl -shared

@@ -43,6 +43,8 @@ int main(int argc, char *argv[])
     printf("%s %d\n", __FUNCTION__, __LINE__);
 	
 	so_logic = dlopen("./liblogic.so", RTLD_NOW | RTLD_GLOBAL);
+	if (!so_logic)
+		printf("%s\n", dlerror());	
 	assert(so_logic);
 	install_func t = (install_func)dlsym(so_logic, "logic_install");
 	assert(t);
