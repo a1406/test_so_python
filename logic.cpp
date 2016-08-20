@@ -43,7 +43,7 @@ int logic_install()
 	assert(t);
 	t();
 
-	for (unsigned int i = 0;; ++i)
+	for (unsigned int i = 0; i < 10; ++i)
 	{
 		int event_id = i % 4;
 		printf("fire event %d %p\n", event_id, all_event_func[event_id]);
