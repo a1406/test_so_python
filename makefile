@@ -25,7 +25,7 @@
 # The executable file name.
 # It must be specified.
 # PROGRAM   := a.out    # the executable name
-PROGRAM   := main liblogic.so libtest.so
+PROGRAM   := main liblogic.so libtest.so libinterface.so
 
 # The directories in which source files reside.
 # At least one path should be specified.
@@ -164,7 +164,10 @@ liblogic.so: logic.o
 	$(CXX) -o $(@) $^   $(LDFLAGS) -ldl -shared
 
 libtest.so: test.o
-	$(CXX) -o $(@) $^   $(LDFLAGS) -shared
+	$(CXX) -o $(@) $^   $(LDFLAGS) -ldl -shared
+
+libinterface.so: interface.o
+	$(CXX) -o $(@) $^   $(LDFLAGS) -ldl -shared
 
 -include $(DEPS)
 

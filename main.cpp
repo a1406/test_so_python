@@ -26,6 +26,7 @@ void player::set_id(int id)
 }
 
 player all_players[100];
+on_event_func all_event_func[4];
 static void *so_logic;
 
 extern "C"

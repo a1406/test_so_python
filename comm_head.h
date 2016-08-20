@@ -21,7 +21,6 @@ public:
 	char *m_name;
 	int m_age;
 };
-
 extern player all_players[100];
 
 extern "C"
@@ -36,7 +35,8 @@ extern "C"
 	int uninstall_test();
 
 		//为了方便python调用
-	typedef void (*on_event_func)(int event_id, player *p); 
+	typedef void (*on_event_func)(int event_id, player *p);
+	extern on_event_func all_event_func[4];	
 //event_id  0-3
 	int register_event(int event_id, on_event_func func);
 	
