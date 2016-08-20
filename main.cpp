@@ -5,40 +5,32 @@
 #include <dlfcn.h>
 #include "comm_head.h"
 
-class player
+char *player::get_name()
 {
-public:
-	char *get_name()
-	{
-		return m_name;
-	}
-	int get_age()
-	{
-		return m_age;
-	}
-	int get_id()
-	{
-		return m_id;
-	}
-	void set_name(char *name)
-	{
-		m_name = strdup(name);
-	}
-	void set_age(int age)
-	{
-		m_age = age;
-	}
-	void set_id(int id)
-	{
-		m_id = id;
-	}
+	return m_name;
+}
+int player::get_age()
+{
+	return m_age;
+}
+int player::get_id()
+{
+	return m_id;
+}
+void player::set_name(char *name)
+{
+	m_name = strdup(name);
+}
+void player::set_age(int age)
+{
+	m_age = age;
+}
+void player::set_id(int id)
+{
+	m_id = id;
+}
 
-	int m_id;
-	char *m_name;
-	int m_age;
-};
-
-static player all_players[100];
+player all_players[100];
 
 int main(int argc, char *argv[])
 {
