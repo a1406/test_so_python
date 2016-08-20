@@ -158,10 +158,10 @@ objs : $(OBJS)
 #----------------------------------------------
 
 main: main.o
-	$(CXX) -o $(@) $^   $(LDFLAGS)
+	$(CXX) -o $(@) $^   $(LDFLAGS) -ldl
 
 liblogic.so: logic.o
-	$(CXX) -o $(@) $^   $(LDFLAGS) -shared
+	$(CXX) -o $(@) $^   $(LDFLAGS) -ldl -shared
 
 libtest.so: test.o
 	$(CXX) -o $(@) $^   $(LDFLAGS) -shared

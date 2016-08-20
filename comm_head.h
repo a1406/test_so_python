@@ -17,5 +17,14 @@ public:
 
 extern player all_players[100];
 
+extern "C"
+{
+	typedef int (*install_func)();
+	int install_logic();
+	int uninstall_logic();
+
+	int install_test();
+	int uninstall_test();	
+};
 
 #endif /*   */
