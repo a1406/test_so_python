@@ -2,6 +2,12 @@
 
 extern "C"
 {
+int test_interface()
+{
+	printf("%s %s\n", __FILE__, __FUNCTION__);
+	return (0);
+}
+	
 int register_event(int event_id, on_event_func func)
 {
 	assert(event_id >= 0 && event_id < 4);
