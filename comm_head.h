@@ -1,5 +1,11 @@
 #ifndef __COMM_HEAD_H
 #define  __COMM_HEAD_H
+#include <stdio.h>
+#include <string.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <dlfcn.h>
+#include <assert.h>
 
 class player
 {

@@ -1,9 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdint.h>
-#include <stdlib.h>
-#include <dlfcn.h>
-#include <assert.h>
 #include "comm_head.h"
 
 char *player::get_name()
@@ -43,18 +37,8 @@ int main(int argc, char *argv[])
 	install_func t = (install_func)dlsym(so_logic, "install");
 	assert(t);
 	t();
-	while (getchar() == 'x')
-	{
-		return (0);
-	}
-/*	
-	for (int i = 0; i < 100; ++i)
-	{
-		all_players[i].m_id = i;
-		all_players[i].m_age = 10;
-		all_players[i].m_name = (char *)"no name";				
-	}
-*/	
-    return 0;
+	int c = getchar();
+	printf("getchar %d\n", c);
+	return (0);
 }
 
