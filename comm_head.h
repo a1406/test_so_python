@@ -31,7 +31,21 @@ extern "C"
 	int uninstall_logic();
 
 	int install_test();
-	int uninstall_test();	
+	int uninstall_test();
+
+		//为了方便python调用
+	typedef void (*on_event_func)(int event_id, player *p); 
+//event_id  0-3
+	int register_event(int event_id, on_event_func func);
+	
+	char *get_name(player *p);
+	void set_name(player *p, char *name);
+	int get_age(player *p);
+	void set_age(player *p, int age);
+	int get_id(player *p);
+		//0-99
+	player *get_player(int id);
+	
 };
 
 #endif /*   */
