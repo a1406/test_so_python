@@ -28,11 +28,20 @@ void player::set_id(int id)
 player all_players[100];
 static void *so_logic;
 
+extern "C"
+{
+int main_func(int n)
+{
+	printf("%s %d n = %d\n", __FUNCTION__, __LINE__, n);
+	return (0);
+}
+};
+	
 int main(int argc, char *argv[])
 {
     printf("%s %d\n", __FUNCTION__, __LINE__);
 	
-	so_logic = dlopen("./liblogic.so", RTLD_NOW);
+	so_logic = dlopen("./liblogic.so", RTLD_NOW | RTLD_GLOBAL);
 	assert(so_logic);
 	install_func t = (install_func)dlsym(so_logic, "logic_install");
 	assert(t);

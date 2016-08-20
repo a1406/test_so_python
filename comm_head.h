@@ -26,6 +26,8 @@ extern player all_players[100];
 
 extern "C"
 {
+	int main_func(int n);
+	
 	typedef int (*install_func)();
 	int install_logic();
 	int uninstall_logic();

@@ -23,10 +23,11 @@ extern "C"
 int test_install()
 {
 	printf("%s: %s %d\n", __FILE__, __FUNCTION__, __LINE__);
-//	register_event(0, on_event_func1);
-//	register_event(1, on_event_func2);
-//	register_event(2, on_event_func3);
-//	register_event(3, on_event_func4);	
+	main_func(100);
+	register_event(0, on_event_func1);
+	register_event(1, on_event_func2);
+	register_event(2, on_event_func3);
+	register_event(3, on_event_func4);	
 	return (0);
 }
 };
