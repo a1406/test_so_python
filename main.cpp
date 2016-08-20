@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 	
 	so_logic = dlopen("./liblogic.so", RTLD_NOW);
 	assert(so_logic);
-	install_func t = (install_func)dlsym(so_logic, "install");
+	install_func t = (install_func)dlsym(so_logic, "logic_install");
 	assert(t);
 	t();
 	int c = getchar();
