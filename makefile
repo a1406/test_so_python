@@ -25,7 +25,7 @@
 # The executable file name.
 # It must be specified.
 # PROGRAM   := a.out    # the executable name
-PROGRAM   := game_srv
+PROGRAM   := main liblogic.so libtest.so
 
 # The directories in which source files reside.
 # At least one path should be specified.
@@ -45,7 +45,7 @@ LIBPATH =
 
 # The flags used by the cpp (man cpp for more).
 # CPPFLAGS  := -Wall -Werror # show all warnings and take them as errors
-CPPFLAGS  := 
+CPPFLAGS  := -fPIC
 
 # The compiling flags used only for C.
 # If it is a C++ program, no need to set these flags.
@@ -97,7 +97,7 @@ DEPS    = $(patsubst %.o,%.d,$(OBJS))
 
 .PHONY : all objs clean cleanall rebuild make_svn_version install print
 
-all : main
+all: $(PROGRAM)
 
 
 # Rules for creating the dependency files (.d).
@@ -156,22 +156,22 @@ objs : $(OBJS)
 
 # Rules for producing the executable.
 #----------------------------------------------
-$(PROGRAM) : $(OBJS)
-ifeq ($(strip $(SRCEXTS)), .c)  # C file
-	$(CC) -o $(PROGRAM) $^ $(LDFLAGS)
-else                            # C++ file
-	$(CXX) -o $(PROGRAM) $^   $(LDFLAGS)
-endif
 
 main: main.o
 	$(CXX) -o $(@) $^   $(LDFLAGS)
+
+liblogic.so: logic.o
+	$(CXX) -o $(@) $^   $(LDFLAGS) -shared
+
+libtest.so: test.o
+	$(CXX) -o $(@) $^   $(LDFLAGS) -shared
 
 -include $(DEPS)
 
 rebuild: clean all
 
 clean :
-	$(RM) $(OBJS) $(DEPS) main *.so
+	$(RM) $(OBJS) $(DEPS) $(PROGRAM)
 
 cleanall: clean
 	@$(RM) $(PROGRAM) $(PROGRAM).exe
