@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <dlfcn.h>
 #include <assert.h>
+#include <unistd.h>
 
 class player
 {
